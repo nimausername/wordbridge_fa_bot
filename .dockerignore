@@ -1,0 +1,24 @@
+# Keep image lean and secret-free
+.git
+.cursor
+.idea
+.vscode
+
+node_modules
+dist
+coverage
+*.log
+.DS_Store
+
+.env
+.env.*
+!.env.example
+
+docs
+scripts
+content/raw
+tmp
+temp
+*.md
+docker-compose.yml
+drizzle.config.ts

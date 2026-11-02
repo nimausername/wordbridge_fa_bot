@@ -1,0 +1,43 @@
+{
+  "name": "en-fa-vocab-bot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "English–Persian vocabulary Telegram bot with spaced repetition",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/db/migrate.ts",
+    "db:seed": "tsx src/content/load-seeds.ts",
+    "db:reset": "tsx src/db/reset.ts && tsx src/content/load-seeds.ts",
+    "vocab:build": "tsx scripts/build-vocab.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test": "tsx --test src/**/*.test.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "drizzle-orm": "^0.45.4",
+    "grammy": "^1.46.0",
+    "lodash": "^4.18.1",
+    "node-cron": "^4.6.0",
+    "postgres": "^4.0.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.27",
+    "@types/node": "^26.6.6",
+    "@types/node-cron": "^3.0.11",
+    "drizzle-kit": "^0.31.11",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
