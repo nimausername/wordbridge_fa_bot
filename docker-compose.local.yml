@@ -1,3 +1,5 @@
+# Local-only Postgres. Do not use this file in Coolify.
+# Coolify must deploy the Dockerfile application (the bot), not Compose.
 services:
   postgres:
     image: postgres:16-alpine

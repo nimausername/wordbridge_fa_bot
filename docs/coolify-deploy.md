@@ -13,11 +13,25 @@ Learners only use Telegram. Your laptop can stay off.
 - `.env` is gitignored. Use `.env.example` as the template.
 - Use **one** replica (long polling). Do not run local `pnpm dev` against the same `BOT_TOKEN` while production is polling.
 
+## Important: use Dockerfile, not Docker Compose
+
+This repo’s `docker-compose.local.yml` is **local Postgres only**.  
+If Coolify deploys Compose, you will only get an empty Postgres container and **no bot** (`No services to build`).
+
+In Coolify choose:
+
+- **Resource type:** Application  
+- **Build pack:** Dockerfile  
+- **Dockerfile location:** `/Dockerfile`  
+- **Not** Docker Compose
+
+Point `DATABASE_URL` at your **existing** (already seeded) Postgres service — do not use a Compose-created empty DB for production.
+
 ## Steps
 
 1. Push this repository to GitHub (public is fine if secrets stay out of git).
 2. In Coolify, ensure PostgreSQL is running. Copy its connection URL.
-3. Create a new **Application** → connect the GitHub repo → build pack **Dockerfile**.
+3. Create a new **Application** → connect the GitHub repo → build pack **Dockerfile** (not Compose).
 4. Add environment variables:
 
 | Name | Value |
@@ -44,8 +58,9 @@ Learners only use Telegram. Your laptop can stay off.
 ```bash
 cp .env.example .env
 # edit BOT_TOKEN and DATABASE_URL — do not commit .env
-docker compose up -d
+docker compose -f docker-compose.local.yml up -d
 pnpm db:migrate
 pnpm db:seed
 pnpm dev
 ```
+

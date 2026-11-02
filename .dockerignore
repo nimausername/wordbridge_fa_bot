@@ -20,5 +20,5 @@ content/raw
 tmp
 temp
 *.md
-docker-compose.yml
+docker-compose*.yml
 drizzle.config.ts

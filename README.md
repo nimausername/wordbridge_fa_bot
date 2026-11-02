@@ -25,7 +25,7 @@ Bot: [@wordbridge_fa_bot](https://t.me/wordbridge_fa_bot)
 cp .env.example .env
 # set BOT_TOKEN + DATABASE_URL — never commit .env
 
-docker compose up -d   # optional local Postgres
+docker compose -f docker-compose.local.yml up -d   # optional local Postgres only
 pnpm install
 pnpm db:migrate
 pnpm db:seed           # ~50k lemmas; skip if DB already seeded
@@ -66,7 +66,7 @@ Open Telegram → send `/start` to your bot.
 
 See [docs/coolify-deploy.md](docs/coolify-deploy.md).
 
-Summary: Dockerfile build → set env vars → **1 replica** → `RUN_SEED=0` if the database is already seeded.
+Summary: Coolify **Application + Dockerfile** (not Docker Compose) → set env vars → **1 replica** → `RUN_SEED=0` if the database is already seeded.
 
 ## Scripts
 
