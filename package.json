@@ -20,9 +20,6 @@
   "engines": {
     "node": ">=20"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
-  },
   "dependencies": {
     "dotenv": "^18.0.9",
     "drizzle-orm": "^0.45.4",

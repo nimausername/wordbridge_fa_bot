@@ -1,2 +1,3 @@
+# pnpm 11+/12: allow dependency install scripts that we need for builds
 allowBuilds:
   esbuild: true
